@@ -1,6 +1,6 @@
 ## The team
 
-O projeto foi feito por [https://github.com/GuiFerreiraS](Guilherme Ferreira) e [https://github.com/jooaodias](João Dias)
+O projeto foi feito por [Guilherme Ferreira](https://github.com/GuiFerreiraS) e [João Dias)](https://github.com/jooaodias) 
 
 ## Available Scripts
 
