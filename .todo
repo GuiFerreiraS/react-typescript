@@ -1,0 +1,14 @@
+
+- Descrição em geral da ferramenta.
+- Formulário simples para captação/cadastro de novos usuários
+- Exibir uma lista com review de usuários
+
+Features Avaliadas:
+
+Cadastro de Usuários(end-users) – Poderá ser feito em memória ou reutilizando o server em Node.js: https://github.com/dobarco/puc-react-vent 
+- Utilização da biblioteca Axios/i18n
+- Utilização de React Hooks (useState, useReducer, useEffect, useCallback, useContext) utilizar de acordo com a necessidade.
+- Tipagem estática de variáveis
+- Renderização de reviews de usuários.
+- Type Alias/Interface para criação de variáveis utilizadas pela ferramenta.
+- Quebra correta de componentes e estruturação do projeto.
