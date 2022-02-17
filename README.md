@@ -1,13 +1,15 @@
 ## The team
 
-O projeto foi feito por [Guilherme Ferreira](https://github.com/GuiFerreiraS) e [João Dias)](https://github.com/jooaodias) 
+O projeto feito por [Guilherme Ferreira](https://github.com/GuiFerreiraS) e [João Vitor Dias](https://github.com/jooaodias)
 
 ## Available Scripts
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para rodar o app:
+Abra [http://localhost:3000](http://localhost:3000) para ver no navegador.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `json-server`
+
+Para rodar o json com os reviews (avaliações), basta acessar a pasta json-db - `cd .\json-db\` e depois rode o seguinte comando:
+`json-server --watch db.json --port 30004`
