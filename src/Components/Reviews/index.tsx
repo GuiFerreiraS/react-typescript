@@ -1,4 +1,5 @@
-import { Card } from "react-bootstrap";
+import { Card } from 'react-bootstrap';
+import { StyledCard } from './Style';
 
 interface ReviewCardProps {
   name: string;
@@ -10,13 +11,13 @@ const ReviewCard = (props: ReviewCardProps) => {
   const { name, photo_url, review } = props;
 
   return (
-    <Card>
+    <StyledCard>
       <Card.Img variant="top" src={photo_url} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{review}</Card.Text>
       </Card.Body>
-    </Card>
+    </StyledCard>
   );
 };
 
