@@ -1,5 +1,5 @@
-import { Card } from 'react-bootstrap';
-import { StyledCard } from './Style';
+import { Card } from "react-bootstrap";
+import { StyledCard } from "./Style";
 
 interface ReviewCardProps {
   name: string;

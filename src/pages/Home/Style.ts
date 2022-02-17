@@ -1,12 +1,10 @@
-import styled from '@emotion/styled';
-import { Container } from 'react-bootstrap';
+import styled from "@emotion/styled";
+import { Container } from "react-bootstrap";
 
 export const StyledContainer = styled(Container)`
   height: 100%;
   font-family: sans-serif;
-  h3 {
-    color: #fca71c;
-  }
+  color: #fca71c;
 
   .card-title {
     font-weight: 600;

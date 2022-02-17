@@ -4,3 +4,10 @@ export interface IUser {
   email: string;
   password: string;
 }
+
+export interface IUserValidation {
+  name: boolean;
+  lastName: boolean;
+  email: boolean;
+  password: boolean;
+}
