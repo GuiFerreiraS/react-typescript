@@ -1,14 +1,6 @@
 
-- Descrição em geral da ferramenta.
-- Formulário simples para captação/cadastro de novos usuários
-- Exibir uma lista com review de usuários
-
-Features Avaliadas:
-
-Cadastro de Usuários(end-users) – Poderá ser feito em memória ou reutilizando o server em Node.js: https://github.com/dobarco/puc-react-vent 
-- Utilização da biblioteca Axios/i18n
-- Utilização de React Hooks (useState, useReducer, useEffect, useCallback, useContext) utilizar de acordo com a necessidade.
-- Tipagem estática de variáveis
-- Renderização de reviews de usuários.
-- Type Alias/Interface para criação de variáveis utilizadas pela ferramenta.
-- Quebra correta de componentes e estruturação do projeto.
+Para o trabalho 2 – Realizaremos melhorias de acordo com o que aprendemos durante o curso.: https://github.com/dobarco/puc-react-vent 
+- Documentação de código/componentes utilizando Storybook.
+- Internacionalização da App
+- Implementação da Lazy Loading nas Rotas.
+- Alteração da comunicação com o backend – Utilizar @apollo/client com graphql. Utilizar server da ultima aula se necessário

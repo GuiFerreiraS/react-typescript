@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "Title": "Smart Guijo Gym",
+    "Name": "Name",
+    "Surname": "Surname",
+    "Send": "Send",
+    "Clean": "Clean",
+    "Email": "Email",
+    "Reviews": "What the people are talking about us",
+    "Name_Placeholder": "Join with your Name",
+    "Surname_Placeholder": "Join with your Surname",
+    "Email_Placeholder": "Join with your E-mail",
+    "Invalid_Inputs": "There are invalid inputs!!"
+  }
+}

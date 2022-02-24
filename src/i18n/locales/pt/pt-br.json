@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "Title": "Academia Smart Guijo",
+    "Name": "Nome",
+    "Surname": "Sobrenome",
+    "Send": "Enviar",
+    "Clean": "Limpar",
+    "Email": "Email",
+    "Reviews": "O que andam falando sobre nós",
+    "Name_Placeholder": "Entre com seu Nome",
+    "Surname_Placeholder": "Entre com seu Sobrenome",
+    "Email_Placeholder": "Entre com seu E-mail",
+    "Invalid_Inputs": "Existem campos inválidos!"
+  }
+}
