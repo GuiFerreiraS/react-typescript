@@ -1,11 +1,13 @@
-import { Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import Register from './Register';
-import Reviews from './Reviews';
 import { StyledContainer } from './Style';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const { t } = useTranslation();
+  const nav = useNavigate();
+
   return (
     <StyledContainer>
       <Row>
@@ -23,8 +25,17 @@ const Home = () => {
           <Register />
         </Col>
       </Row>
+
       <Row style={{ marginTop: 100 }}>
-        <Reviews />
+        <Col>
+          Para ver os feedbacks dos nossos alunos
+          <Button
+            style={{ marginTop: 8, marginLeft: 0 }}
+            onClick={() => nav('/reviews')}
+          >
+            Clique aqui
+          </Button>
+        </Col>
       </Row>
     </StyledContainer>
   );

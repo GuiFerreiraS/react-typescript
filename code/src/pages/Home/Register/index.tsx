@@ -5,23 +5,23 @@ import { useTranslation } from 'react-i18next';
 
 const initialUser: IUser = {
   name: '',
-  lastName: '',
-  email: '',
-  password: '',
+  age: 0,
+  photo_url: '',
+  review: '',
 };
 
 const initialValidation: IUserValidation = {
   name: false,
-  lastName: false,
-  email: false,
-  password: false,
+  age: false,
+  photo_url: false,
+  review: false,
 };
 
 type ReducerTypes =
   | 'SET_NAME'
-  | 'SET_LAST_NAME'
-  | 'SET_EMAIL'
-  | 'SET_PASSWORD'
+  | 'SET_AGE'
+  | 'SET_PHOTO_URL'
+  | 'SET_REVIEW'
   | 'FORM_CLEANUP';
 
 const formReducer = (
@@ -38,34 +38,34 @@ const formReducer = (
       validation: { ...state.validation, name: isValid },
     };
   }
-  if (action.type === 'SET_LAST_NAME') {
+  if (action.type === 'SET_AGE') {
     let isValid = false;
-    if (action.value.trim().length > 5) {
+    if (typeof action.value === 'number') {
       isValid = true;
     }
     return {
-      values: { ...state.values, lastName: action.value },
-      validation: { ...state.validation, lastName: isValid },
+      values: { ...state.values, age: action.value },
+      validation: { ...state.validation, age: isValid },
     };
   }
-  if (action.type === 'SET_EMAIL') {
+  if (action.type === 'SET_PHOTO_URL') {
     let isValid = false;
     if (action.value.trim().length > 8) {
       isValid = true;
     }
     return {
-      values: { ...state.values, email: action.value },
-      validation: { ...state.validation, email: isValid },
+      values: { ...state.values, photo_url: action.value },
+      validation: { ...state.validation, photo_url: isValid },
     };
   }
-  if (action.type === 'SET_PASSWORD') {
+  if (action.type === 'SET_REVIEW') {
     let isValid = false;
-    if (action.value.trim().length > 8) {
+    if (action.value.trim().length > 10) {
       isValid = true;
     }
     return {
-      values: { ...state.values, password: action.value },
-      validation: { ...state.validation, password: isValid },
+      values: { ...state.values, review: action.value },
+      validation: { ...state.validation, review: isValid },
     };
   }
   if (action.type === 'FORM_CLEANUP') {
@@ -137,18 +137,19 @@ const Register = () => {
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group className="mb-3" controlId="formLastName">
-            <Form.Label>{t('Surname')}</Form.Label>
+          <Form.Group className="mb-3" controlId="formAge">
+            <Form.Label>{t('Age')}</Form.Label>
             <Form.Control
+              type="number"
               onChange={e =>
                 dispatchForm({
-                  type: 'SET_LAST_NAME',
+                  type: 'SET_AGE',
                   value: e.target.value,
                 })
               }
-              value={formState.values.lastName}
-              isValid={formState.validation.lastName}
-              placeholder={t('Surname_Placeholder')}
+              value={formState.values.age}
+              isValid={formState.validation.age}
+              placeholder={t('Age_Placeholder')}
               required
             />
           </Form.Group>
@@ -157,15 +158,15 @@ const Register = () => {
 
       <Row>
         <Col>
-          <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>{t('Email')}</Form.Label>
+          <Form.Group className="mb-3" controlId="formPhotoUrl">
+            <Form.Label>{t('Photo_Url')}</Form.Label>
             <Form.Control
               onChange={e =>
-                dispatchForm({ type: 'SET_EMAIL', value: e.target.value })
+                dispatchForm({ type: 'SET_PHOTO_URL', value: e.target.value })
               }
-              value={formState.values.email}
-              isValid={formState.validation.email}
-              placeholder={t('Email_Placeholder')}
+              value={formState.values.photo_url}
+              isValid={formState.validation.photo_url}
+              placeholder={t('Photo_Url_Placeholder')}
               required
             />
           </Form.Group>
@@ -173,19 +174,19 @@ const Register = () => {
       </Row>
       <Row>
         <Col>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>{t('Password')}</Form.Label>
+          <Form.Group className="mb-3" controlId="formReview">
+            <Form.Label>{t('Review')}</Form.Label>
             <Form.Control
               onChange={e =>
                 dispatchForm({
-                  type: 'SET_PASSWORD',
+                  type: 'SET_REVIEW',
                   value: e.target.value,
                 })
               }
-              type="password"
-              value={formState.values.password}
-              isValid={formState.validation.password}
-              placeholder={t('Password')}
+              type="textarea"
+              value={formState.values.review}
+              isValid={formState.validation.review}
+              placeholder={t('Review_Placeholder')}
               required
             />
           </Form.Group>

@@ -2,14 +2,16 @@
   "translation": {
     "Title": "Academia Smart Guijo",
     "Name": "Nome",
-    "Surname": "Sobrenome",
+    "Age": "Idade",
     "Send": "Enviar",
     "Clean": "Limpar",
-    "Email": "Email",
+    "Photo_Url": "Link de sua foto de perfil (jpg, png, etc.)",
     "Reviews": "O que andam falando sobre nós",
+    "Review": "Avaliação",
     "Name_Placeholder": "Entre com seu Nome",
-    "Surname_Placeholder": "Entre com seu Sobrenome",
-    "Email_Placeholder": "Entre com seu E-mail",
+    "Age_Placeholder": "Entre com sua idade",
+    "Photo_Url_Placeholder": "Entre com sua foto de perfil",
+    "Review_Placeholder": "Sua avaliação",
     "Invalid_Inputs": "Existem campos inválidos!"
   }
 }
