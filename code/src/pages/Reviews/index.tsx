@@ -13,8 +13,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState<IReview[]>([]);
   const nav = useNavigate();
 
-  const { data, loading, error } = useQuery(LOAD_REVIEWS);
-  const [createAluno, { error: err }] = useMutation(CREATE_REVIEW_MUTATION);
+  const { data } = useQuery(LOAD_REVIEWS);
 
   useEffect(() => {
     if (data) {

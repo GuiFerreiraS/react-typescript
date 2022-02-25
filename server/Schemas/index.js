@@ -38,10 +38,10 @@ const Mutation = new GraphQLObjectType({
       resolve(parent, args) {
         alunoData.push({
           id: alunoData.length + 1,
-          name: args.nome,
+          name: args.name,
           age: args.age,
           photo_url: args.photo_url,
-          review: args.GraphQLString,
+          review: args.review,
         });
         return args;
       },

@@ -107,25 +107,25 @@ const Register = () => {
       return;
     }
     console.log(formState.values);
-    // cadastraReview(formState.values);
+    cadastraReview(formState.values);
 
-    // dispatchForm({ type: 'FORM_CLEANUP', value: '' });
+    dispatchForm({ type: 'FORM_CLEANUP', value: '' });
   };
 
-  // const cadastraReview = (user: IUser) => {
-  //   createReview({
-  //     variables: {
-  //       name: user.name,
-  //       age: user.age,
-  //       photo_url: user.photo_url,
-  //       review: user.review,
-  //     },
-  //   });
+  const cadastraReview = (user: IUser) => {
+    createReview({
+      variables: {
+        name: user.name,
+        age: user.age,
+        photo_url: user.photo_url,
+        review: user.review,
+      },
+    });
 
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  // };
+    if (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
