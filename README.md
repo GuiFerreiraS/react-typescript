@@ -9,7 +9,7 @@ O projeto feito por [Guilherme Ferreira](https://github.com/GuiFerreiraS) e [Jo�
 Para rodar o app:
 Abra [http://localhost:3000](http://localhost:3000) para ver no navegador.
 
-### `json-server`
+### `graphql`
 
-Para rodar o json com os reviews (avaliações), basta acessar a pasta json-db - `cd .\json-db\` e depois rode o seguinte comando:
-`json-server --watch db.json --port 30004`
+Para rodar o server node com os reviews (avaliações), basta acessar a server - `cd .\server\` e depois rode o seguinte comando:
+`npm start`
