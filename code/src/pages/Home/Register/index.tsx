@@ -2,6 +2,9 @@ import { useEffect, useReducer, useState } from 'react';
 import { Col, Form, Row, Button, Alert } from 'react-bootstrap';
 import { IUser, IUserValidation } from '../../../models/User';
 import { useTranslation } from 'react-i18next';
+import { CREATE_REVIEW_MUTATION } from '../../../graphql/Mutation';
+import { Review } from '../../../models/ReviewCard';
+import { useMutation } from '@apollo/client';
 
 const initialUser: IUser = {
   name: '',
@@ -40,11 +43,11 @@ const formReducer = (
   }
   if (action.type === 'SET_AGE') {
     let isValid = false;
-    if (typeof action.value === 'number') {
+    if (+action.value >= 0 && +action.value <= 100) {
       isValid = true;
     }
     return {
-      values: { ...state.values, age: action.value },
+      values: { ...state.values, age: +action.value },
       validation: { ...state.validation, age: isValid },
     };
   }
@@ -82,6 +85,7 @@ const Register = () => {
     validation: initialValidation,
   });
   const [show, setShow] = useState<boolean>(false);
+  const [createReview, { error: err }] = useMutation(CREATE_REVIEW_MUTATION);
 
   useEffect(() => {
     if (
@@ -102,17 +106,26 @@ const Register = () => {
       setShow(true);
       return;
     }
-    const oldUsers: IUser[] = localStorage.getItem('users')
-      ? JSON.parse(localStorage.getItem('users')!)
-      : [];
+    console.log(formState.values);
+    // cadastraReview(formState.values);
 
-    localStorage.setItem(
-      'users',
-      JSON.stringify([...oldUsers, formState.values])
-    );
-
-    dispatchForm({ type: 'FORM_CLEANUP', value: '' });
+    // dispatchForm({ type: 'FORM_CLEANUP', value: '' });
   };
+
+  // const cadastraReview = (user: IUser) => {
+  //   createReview({
+  //     variables: {
+  //       name: user.name,
+  //       age: user.age,
+  //       photo_url: user.photo_url,
+  //       review: user.review,
+  //     },
+  //   });
+
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <Form onSubmit={handleSubmit}>

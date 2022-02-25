@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    createAluno: {
+    createReview: {
       type: AlunoType,
       args: {
         name: { type: GraphQLString },

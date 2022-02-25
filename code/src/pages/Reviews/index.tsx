@@ -5,7 +5,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { IReview } from '../../models/Review';
 import { LOAD_REVIEWS } from '../../graphql/Queries';
 import { CREATE_REVIEW_MUTATION } from '../../graphql/Mutation';
-import ReviewCard from '../../components/Reviews';
+import ReviewCard from '../../components/ReviewCard';
 import { useNavigate } from 'react-router-dom';
 
 const Reviews = () => {
@@ -26,19 +26,15 @@ const Reviews = () => {
     <div style={{ color: '#fca71c' }}>
       <h4> {t('Reviews')}</h4>
       <CardGroup>
-        {reviews?.slice(0, reviews?.length).map(review =>
-          Math.random() < 0.5 ? (
-            <Col key={review.id} className="mx-2 my-1">
-              <ReviewCard
-                review={review.review}
-                name={review.name}
-                photo_url={review.photo_url}
-              />
-            </Col>
-          ) : (
-            <React.Fragment key={review.id} />
-          )
-        )}
+        {reviews?.map(review => (
+          <Col key={review.id} className="mx-2 my-1">
+            <ReviewCard
+              review={review.review}
+              name={review.name}
+              photo_url={review.photo_url}
+            />
+          </Col>
+        ))}
       </CardGroup>
       <Row className="mt-5">
         <Button
