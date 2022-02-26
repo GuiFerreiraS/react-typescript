@@ -4,14 +4,15 @@ import {
   from,
   HttpLink,
   InMemoryCache,
-} from '@apollo/client';
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+} from "@apollo/client";
+import React from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { AppContextProvider } from "./context/AppContext";
 
-const LazyHome = React.lazy(() => import('./pages/Home'));
-const LazyAlunos = React.lazy(() => import('./pages/Reviews'));
+const LazyHome = React.lazy(() => import("./pages/Home"));
+const LazyAlunos = React.lazy(() => import("./pages/Reviews"));
 
-const link = from([new HttpLink({ uri: 'http://localhost:3001/graphql' })]);
+const link = from([new HttpLink({ uri: "http://localhost:3001/graphql" })]);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -20,19 +21,21 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <div style={{ backgroundColor: ' #202020', padding: '100px' }}>
+    <div style={{ backgroundColor: " #202020", padding: "100px" }}>
       <ApolloProvider client={client}>
-        <React.Suspense fallback="Loading...">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/">
-                <Route index element={<LazyHome />} />
-                <Route path="/reviews" element={<LazyAlunos />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </React.Suspense>
+        <AppContextProvider>
+          <React.Suspense fallback="Loading...">
+            <BrowserRouter>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<LazyHome />} />
+                  <Route path="/reviews" element={<LazyAlunos />} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </React.Suspense>
+        </AppContextProvider>
       </ApolloProvider>
     </div>
   );

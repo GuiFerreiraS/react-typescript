@@ -1,16 +1,16 @@
-import { useEffect, useReducer, useState } from 'react';
-import { Col, Form, Row, Button, Alert } from 'react-bootstrap';
-import { IUser, IUserValidation } from '../../../models/User';
-import { useTranslation } from 'react-i18next';
-import { CREATE_REVIEW_MUTATION } from '../../../graphql/Mutation';
-import { Review } from '../../../models/ReviewCard';
-import { useMutation } from '@apollo/client';
+import { useEffect, useReducer, useState } from "react";
+import { Col, Form, Row, Button, Alert } from "react-bootstrap";
+import { IUser, IUserValidation } from "../../../models/User";
+import { useTranslation } from "react-i18next";
+import { CREATE_REVIEW_MUTATION } from "../../../graphql/Mutation";
+import { useMutation } from "@apollo/client";
+import { useAppContext } from "../../../context/AppContext";
 
 const initialUser: IUser = {
-  name: '',
+  name: "",
   age: 0,
-  photo_url: '',
-  review: '',
+  photo_url: "",
+  review: "",
 };
 
 const initialValidation: IUserValidation = {
@@ -21,17 +21,17 @@ const initialValidation: IUserValidation = {
 };
 
 type ReducerTypes =
-  | 'SET_NAME'
-  | 'SET_AGE'
-  | 'SET_PHOTO_URL'
-  | 'SET_REVIEW'
-  | 'FORM_CLEANUP';
+  | "SET_NAME"
+  | "SET_AGE"
+  | "SET_PHOTO_URL"
+  | "SET_REVIEW"
+  | "FORM_CLEANUP";
 
 const formReducer = (
   state: { values: IUser; validation: IUserValidation },
   action: { type: ReducerTypes; value: string }
 ) => {
-  if (action.type === 'SET_NAME') {
+  if (action.type === "SET_NAME") {
     let isValid = false;
     if (action.value.trim().length > 5) {
       isValid = true;
@@ -41,7 +41,7 @@ const formReducer = (
       validation: { ...state.validation, name: isValid },
     };
   }
-  if (action.type === 'SET_AGE') {
+  if (action.type === "SET_AGE") {
     let isValid = false;
     if (+action.value >= 0 && +action.value <= 100) {
       isValid = true;
@@ -51,7 +51,7 @@ const formReducer = (
       validation: { ...state.validation, age: isValid },
     };
   }
-  if (action.type === 'SET_PHOTO_URL') {
+  if (action.type === "SET_PHOTO_URL") {
     let isValid = false;
     if (action.value.trim().length > 8) {
       isValid = true;
@@ -61,7 +61,7 @@ const formReducer = (
       validation: { ...state.validation, photo_url: isValid },
     };
   }
-  if (action.type === 'SET_REVIEW') {
+  if (action.type === "SET_REVIEW") {
     let isValid = false;
     if (action.value.trim().length > 10) {
       isValid = true;
@@ -71,7 +71,7 @@ const formReducer = (
       validation: { ...state.validation, review: isValid },
     };
   }
-  if (action.type === 'FORM_CLEANUP') {
+  if (action.type === "FORM_CLEANUP") {
     return { values: initialUser, validation: initialValidation };
   }
 
@@ -86,11 +86,12 @@ const Register = () => {
   });
   const [show, setShow] = useState<boolean>(false);
   const [createReview, { error: err }] = useMutation(CREATE_REVIEW_MUTATION);
+  const { reviews, setReviews } = useAppContext();
 
   useEffect(() => {
     if (
       !Object.values(formState.validation).some(
-        fieldValidation => !fieldValidation
+        (fieldValidation) => !fieldValidation
       )
     )
       setShow(false);
@@ -100,7 +101,7 @@ const Register = () => {
     e.preventDefault();
     if (
       Object.values(formState.validation).some(
-        fieldValidation => !fieldValidation
+        (fieldValidation) => !fieldValidation
       )
     ) {
       setShow(true);
@@ -109,7 +110,7 @@ const Register = () => {
     console.log(formState.values);
     cadastraReview(formState.values);
 
-    dispatchForm({ type: 'FORM_CLEANUP', value: '' });
+    dispatchForm({ type: "FORM_CLEANUP", value: "" });
   };
 
   const cadastraReview = (user: IUser) => {
@@ -120,6 +121,9 @@ const Register = () => {
         photo_url: user.photo_url,
         review: user.review,
       },
+    }).then((response) => {
+      console.log(response);
+      setReviews([...reviews, { ...user, id: reviews.length + 1 }]);
     });
 
     if (err) {
@@ -131,38 +135,38 @@ const Register = () => {
     <Form onSubmit={handleSubmit}>
       {show && (
         <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-          {t('Invalid_Inputs')}
+          {t("Invalid_Inputs")}
         </Alert>
       )}
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>{t('Name')}</Form.Label>
+            <Form.Label>{t("Name")}</Form.Label>
             <Form.Control
-              onChange={e =>
-                dispatchForm({ type: 'SET_NAME', value: e.target.value })
+              onChange={(e) =>
+                dispatchForm({ type: "SET_NAME", value: e.target.value })
               }
               value={formState.values.name}
               isValid={formState.validation.name}
-              placeholder={t('Name_Placeholder')}
+              placeholder={t("Name_Placeholder")}
               required
             />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group className="mb-3" controlId="formAge">
-            <Form.Label>{t('Age')}</Form.Label>
+            <Form.Label>{t("Age")}</Form.Label>
             <Form.Control
               type="number"
-              onChange={e =>
+              onChange={(e) =>
                 dispatchForm({
-                  type: 'SET_AGE',
+                  type: "SET_AGE",
                   value: e.target.value,
                 })
               }
               value={formState.values.age}
               isValid={formState.validation.age}
-              placeholder={t('Age_Placeholder')}
+              placeholder={t("Age_Placeholder")}
               required
             />
           </Form.Group>
@@ -172,14 +176,14 @@ const Register = () => {
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="formPhotoUrl">
-            <Form.Label>{t('Photo_Url')}</Form.Label>
+            <Form.Label>{t("Photo_Url")}</Form.Label>
             <Form.Control
-              onChange={e =>
-                dispatchForm({ type: 'SET_PHOTO_URL', value: e.target.value })
+              onChange={(e) =>
+                dispatchForm({ type: "SET_PHOTO_URL", value: e.target.value })
               }
               value={formState.values.photo_url}
               isValid={formState.validation.photo_url}
-              placeholder={t('Photo_Url_Placeholder')}
+              placeholder={t("Photo_Url_Placeholder")}
               required
             />
           </Form.Group>
@@ -188,18 +192,18 @@ const Register = () => {
       <Row>
         <Col>
           <Form.Group className="mb-3" controlId="formReview">
-            <Form.Label>{t('Review')}</Form.Label>
+            <Form.Label>{t("Review")}</Form.Label>
             <Form.Control
-              onChange={e =>
+              onChange={(e) =>
                 dispatchForm({
-                  type: 'SET_REVIEW',
+                  type: "SET_REVIEW",
                   value: e.target.value,
                 })
               }
               type="textarea"
               value={formState.values.review}
               isValid={formState.validation.review}
-              placeholder={t('Review_Placeholder')}
+              placeholder={t("Review_Placeholder")}
               required
             />
           </Form.Group>
@@ -208,15 +212,15 @@ const Register = () => {
       <Row>
         <Col>
           <Row>
-            <Button type="submit">{t('Send')}</Button>
+            <Button type="submit">{t("Send")}</Button>
           </Row>
         </Col>
         <Col>
           <Row>
             <Button
-              onClick={() => dispatchForm({ type: 'FORM_CLEANUP', value: '' })}
+              onClick={() => dispatchForm({ type: "FORM_CLEANUP", value: "" })}
             >
-              {t('Clean')}
+              {t("Clean")}
             </Button>
           </Row>
         </Col>

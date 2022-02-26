@@ -1,7 +1,7 @@
 export interface IReview {
-  id: string;
+  id: number;
   name: string;
   photo_url: string;
   review: string;
-  age: string;
+  age: number;
 }
