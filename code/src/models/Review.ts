@@ -3,4 +3,5 @@ export interface IReview {
   name: string;
   photo_url: string;
   review: string;
+  age: string;
 }

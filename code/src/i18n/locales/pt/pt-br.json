@@ -3,7 +3,9 @@
     "Title": "Academia Smart Guijo",
     "Name": "Nome",
     "Age": "Idade",
+    "years": "anos",
     "Send": "Enviar",
+    "Back": "Voltar",
     "Clean": "Limpar",
     "Photo_Url": "Link de sua foto de perfil (jpg, png, etc.)",
     "Reviews": "O que andam falando sobre nós",
@@ -12,6 +14,8 @@
     "Age_Placeholder": "Entre com sua idade",
     "Photo_Url_Placeholder": "Entre com sua foto de perfil",
     "Review_Placeholder": "Sua avaliação",
-    "Invalid_Inputs": "Existem campos inválidos!"
+    "Invalid_Inputs": "Existem campos inválidos!",
+    "See feedback": "Para ver os feedbacks dos nossos alunos",
+    "Click here": "Clique aqui"
   }
 }

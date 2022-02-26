@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import { Card } from "react-bootstrap";
 
 export const StyledCard = styled(Card)`
-  max-width: 400px;
-  width: 180px;
+  width: 200px;
   height: 100%;
 
   .card-text {

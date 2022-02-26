@@ -2,14 +2,19 @@
   "translation": {
     "Title": "Smart Guijo Gym",
     "Name": "Name",
-    "Surname": "Surname",
+    "Age": "Age",
+    "years": "years old",
     "Send": "Send",
+    "Back": "Go back",
     "Clean": "Clean",
     "Email": "Email",
     "Reviews": "What the people are talking about us",
     "Name_Placeholder": "Join with your Name",
-    "Surname_Placeholder": "Join with your Surname",
-    "Email_Placeholder": "Join with your E-mail",
-    "Invalid_Inputs": "There are invalid inputs!!"
+    "Age_Placeholder": "Join with your age",
+    "Photo_Url_Placeholder": "Join with you foto url",
+    "Review_Placeholder": "Your review",
+    "Invalid_Inputs": "There are invalid inputs!!",
+    "See feedback": "To see all feedbacks",
+    "Click here": "Click here"
   }
 }
